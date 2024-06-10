@@ -14,7 +14,7 @@ export const sidebarLinks = [
     route: "/create-podcast",
     label: "Create Podcast",
   },
-];
+]
 
 export const voiceDetails = [
   {
@@ -41,7 +41,7 @@ export const voiceDetails = [
     id: 6,
     name: "shimmer",
   },
-];
+]
 
 export const podcastData = [
   {
@@ -100,4 +100,4 @@ export const podcastData = [
     imgURL:
       "https://lovely-flamingo-139.convex.cloud/api/storage/221ee4bd-435f-42c3-8e98-4a001e0d806e",
   },
-];
+]
