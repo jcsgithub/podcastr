@@ -29,6 +29,7 @@ import GeneratePodcast from "@/components/GeneratePodcast"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
 import { Loader } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
+import { VoiceType } from "@/types"
 
 const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"]
 
@@ -78,10 +79,10 @@ const CreatePodcast = () => {
               name="podcastTitle"
               render={({ field }) => (
                 <FormItem className="flex flex-col gap-2.5">
-                  <FormLabel className="text-16 font-bold text-white-1">Username</FormLabel>
+                  <FormLabel className="text-16 font-bold text-white-1">Title</FormLabel>
                   <FormControl>
                     <Input
-                      className="input-class focus-visible:ring-orange-1"
+                      className="input-class focus-visible:ring-offset-orange-1"
                       placeholder="JSM Pro Podcast"
                       {...field}
                     />
@@ -95,7 +96,11 @@ const CreatePodcast = () => {
               <Label className="text-16 font-bold text-white-1">Select AI Voice</Label>
 
               <Select onValueChange={(value) => setVoiceType(value)}>
-                <SelectTrigger className={cn("text-16 w-full border-none bg-black-1 text-gray-1")}>
+                <SelectTrigger
+                  className={cn(
+                    "text-16 w-full border-none bg-black-1 text-gray-1 focus-visible:ring-offset-orange-1"
+                  )}
+                >
                   <SelectValue placeholder="Select AI Voice" className="placeholder:text-gray-1" />
                 </SelectTrigger>
                 <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1 focus:ring-orange-1">
@@ -121,7 +126,7 @@ const CreatePodcast = () => {
                   <FormLabel className="text-16 font-bold text-white-1">Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      className="input-class focus-visible:ring-orange-1"
+                      className="input-class focus-visible:ring-offset-orange-1"
                       placeholder="Write a short podcast description"
                       {...field}
                     />
@@ -132,7 +137,15 @@ const CreatePodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-            <GeneratePodcast />
+            <GeneratePodcast
+              setAudioStorageId={setAudioStorageId}
+              setAudio={setAudioUrl}
+              setVoicePrompt={setVoicePrompt}
+              setAudioDuration={setAudioDuration}
+              audio={audioUrl}
+              voiceType={voiceType as VoiceType}
+              voicePrompt={audioUrl}
+            />
 
             <GenerateThumbnail />
 
